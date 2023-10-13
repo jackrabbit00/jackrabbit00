@@ -1,0 +1,31 @@
+function undyne_fight() {
+  // Set up the fight.
+  var PlayerHP = 100;
+  var UndyneHP = 100;
+  var isUndyneTurn = true;
+  // Start the fight loop.
+  while (PlayerHP > 0 && UndyneHP > 0) {
+    // Undyne's turn.
+    if (isUndyneTurn) {
+      var undyne_damage = Math.floor(Math.random() * 10) + 1;
+      PlayerHP -= undyne_damage;
+      // Check if Undyne's attack killed the player.
+      if (PlayerHP <= 0) {
+        return "Undyne wins";
+      }
+    }
+    // Player's turn.
+    else {
+      var player_damage = Math.floor(Math.random() * 5) + 1;
+      UndyneHP -= player_damage;
+      // Check if the player's attack killed Undyne.
+      if (UndyneHP <= 0) {
+        return "Player wins";
+      }
+    }
+    // Switch turns.
+    isUndyneTurn = !isUndyneTurn;
+  }
+  // The fight is over.
+  return "Draw";
+}
